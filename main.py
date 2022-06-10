@@ -2,6 +2,7 @@
 from jugador import *
 from pregunta import *
 from BancoDePreguntas import *
+from records import *
 
 class Juego():
     
@@ -28,14 +29,19 @@ class Juego():
                     keepPlaying = None
                     while keepPlaying != "s" and keepPlaying != "n":
                         keepPlaying = input()
-                        if keepPlaying.lower == "s":
+                        if keepPlaying.lower() == "s":
                             print("Avanzaste a la ronda",jugador.ronda)
-                        elif keepPlaying == "n":
+                        elif keepPlaying.lower() == "n":
+                            guardarPuntaje(self.nombre,self.jugadorActual.puntos,self.rondaActual())
                             print("Retirado exitosamente del juego")
+                            input("Presione cualquier tecla para salir")
                             quit()
                 else:
+                    guardarPuntaje(self.nombre,self.jugadorActual.puntos,self.rondaActual())
                     print("Felicidades, ganaste el juego!")
                     print("Podes canjear tus {} puntos en la tienda".format(jugador.puntos))
+                    input("Presione cualquier tecla para salir")
+                    
 
             else:
                 input("Presione cualquier tecla para salir")
